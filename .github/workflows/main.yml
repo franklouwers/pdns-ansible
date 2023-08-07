@@ -2,6 +2,8 @@
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '33 5 * * 0'
 
 jobs:
   Tests:
@@ -14,7 +16,6 @@ jobs:
           - "2.13"
           - "2.14"
         scenario:
-          - pdns-45
           - pdns-46
           - pdns-47
           - pdns-48
