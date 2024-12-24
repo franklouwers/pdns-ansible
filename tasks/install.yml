@@ -17,18 +17,18 @@
 - name: Install PowerDNS
   package:
     name: "{{ pdns_package_name }}{{ _pdns_package_version | default('') }}"
-    state: present
+    state: latest
 
 - name: Install PowerDNS debug symbols
   package:
     name: "{{ pdns_debug_symbols_package_name }}{{ _pdns_package_version | default('') }}"
-    state: present
+    state: latest
   when: pdns_install_debug_symbols_package
 
 - name: Install PowerDNS backends
   package:
     name: "{{ pdns_backends_packages[item.key.split(':')[0]] }}{{ _pdns_package_version | default('') }}"
-    state: present
+    state: latest
   no_log: True
   when: pdns_backends_packages[item.key.split(':')[0]] is defined
   with_dict: "{{ pdns_backends }}"
